@@ -1,0 +1,21 @@
+pcall(function()
+    require(game:GetService("ReplicatedStorage").Blaster.Scripts.CameraRecoiler).recoil = function(a) return end
+end)
+
+function Apply(Character)
+    repeat task.wait() until Character:FindFirstChildOfClass("Tool") or task.wait(1)
+    Weapon = Character:FindFirstChildOfClass("Tool")
+
+    if Weapon then
+        Weapon:SetAttribute("spread", 0)
+        Weapon:SetAttribute("rateOfFire", 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+
+        Weapon:SetAttribute("reloadTime", 0)
+    end
+end
+
+Apply(game.Players.LocalPlayer.Character)
+game.Players.LocalPlayer.CharacterAdded:Connect(function(Character)
+    Character:WaitForChild("Humanoid")
+    Apply(Character)
+end)
